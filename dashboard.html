@@ -8,26 +8,45 @@
 </head>
 <body class="dashboard-page">
 
-  <!-- Cabeçalho -->
   <header class="dashboard-header">
     <h1>Resultados Human Clinic</h1>
-
     <button class="btn-logout" onclick="logout()">Sair</button>
   </header>
 
-  <!-- Conteúdo principal -->
   <main class="dashboard-content">
-    <iframe
-      src="https://app.powerbi.com/view?r=eyJrIjoiODJkMzc0YTctN2NjMi00NTZkLTkwMTEtODY0MDg1YjBhYzc5IiwidCI6ImMxOWFiZWFhLTVhZDQtNDRlOC04NTQ2LTllYTA2MmEyOTVhZCJ9"
-      allowfullscreen>
-    </iframe>
+      <iframe id="powerbiFrame"></iframe>
   </main>
 
-  <script src="js/auth.js"></script>
-
   <script>
+    const API_URL = "https://backend-login-java.onrender.com";
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      window.location.href = "login.html";
+    }
+
+    fetch(`${API_URL}/powerbi-url`, {
+      headers: {
+        "Authorization": "Bearer " + token
+      }
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error("Não autorizado");
+      }
+      return res.json();
+    })
+    .then(data => {
+      document.getElementById("powerbiFrame").src = data.url;
+    })
+    .catch(() => {
+      alert("Sessão expirada. Faça login novamente.");
+      localStorage.removeItem("token");
+      window.location.href = "login.html";
+    });
+
     function logout() {
-      localStorage.removeItem("logado");
+      localStorage.removeItem("token");
       window.location.href = "login.html";
     }
   </script>
