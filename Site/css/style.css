@@ -1,0 +1,19 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 40px;
+}
+
+input, button {
+  display: block;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+button, .btn {
+  background: #2b7cff;
+  color: white;
+  border: none;
+  padding: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
