@@ -2,17 +2,26 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Login</title>
+  <title>Acesso ao Sistema</title>
   <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body class="page-center">
 
-  <h2>Login</h2>
+  <div class="card">
+    <h1>Login 🔐</h1>
+    <p>Entre com suas credenciais para acessar a dashboard</p>
 
-  <input id="user" placeholder="Usuário">
-  <input id="pass" type="password" placeholder="Senha">
+    <div class="form-group">
+      <input id="user" type="text" placeholder="Usuário">
+    </div>
 
-  <button onclick="login()">Entrar</button>
+    <div class="form-group">
+      <input id="pass" type="password" placeholder="Senha">
+    </div>
+
+    <button class="btn-primary" onclick="login()">Entrar</button>
+  </div>
 
   <script src="js/auth.js"></script>
 </body>

@@ -3,19 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body class="dashboard-page">
 
-  <h2>Dashboard Power BI</h2>
+  <!-- Cabeçalho -->
+  <header class="dashboard-header">
+    <h1>Resultados Human Clinic</h1>
 
-  <iframe
-    src="https://app.powerbi.com/view?r=eyJrIjoiODJkMzc0YTctN2NjMi00NTZkLTkwMTEtODY0MDg1YjBhYzc5IiwidCI6ImMxOWFiZWFhLTVhZDQtNDRlOC04NTQ2LTllYTA2MmEyOTVhZCJ9"
-    width="100%"
-    height="600"
-    frameborder="0"
-    allowfullscreen>
-  </iframe>
+    <button class="btn-logout" onclick="logout()">Sair</button>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main class="dashboard-content">
+    <iframe
+      src="https://app.powerbi.com/view?r=eyJrIjoiODJkMzc0YTctN2NjMi00NTZkLTkwMTEtODY0MDg1YjBhYzc5IiwidCI6ImMxOWFiZWFhLTVhZDQtNDRlOC04NTQ2LTllYTA2MmEyOTVhZCJ9"
+      allowfullscreen>
+    </iframe>
+  </main>
 
   <script src="js/auth.js"></script>
+
+  <script>
+    function logout() {
+      localStorage.removeItem("logado");
+      window.location.href = "login.html";
+    }
+  </script>
+
 </body>
 </html>
